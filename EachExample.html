@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+<body>
+    <div>first div</div>
+     <div>second div</div>
+    <div> third div</div>
+    <script>     
+        // Number the divs of the document, up to and including div#last
+        $("div").each(function(idx) { // find all <div>s, and iterate through them
+            $(this).prepend(idx + ": "); // Insert index at start of each
+            if (this.id === "last") return false; // Stop at element #last
+        });
+
+        //Despite the power of the each() method, it is not very commonly7
+    </script>
+</body>
+</html>

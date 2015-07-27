@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        // A simple function for defining simple classes
+        function defineClass(constructor, // A function that sets instance properties
+                             methods,     // Instance methods: copied to prototype
+                             statics)     // Class properties: copied to constructor
+        {
+            if (methods) extend(constructor.prototype, methods);
+            if (statics) extend(constructor, statics);
+            return constructor;
+        }
+        // This is a simple variant of our Range class
+        var SimpleRange =
+        defineClass( function (f, t) { this.f = f; this.t = t; },
+        {
+            includes: function (x) { return this.f <= x && x <= this.t; },
+            toString: function () { return this.f + "..." + this.t; }
+        },
+        { upto: function (t) { return new SimpleRange(0, t); } });
+
+        /*
+* Copy the enumerable properties of p to o, and return o.
+* If o and p have a property by the same name, o's property is overwritten.
+* This function does not handle getters and setters or copy attributes.
+*/
+        function extend(o, p) {
+            for (prop in p) { // For all props in p.
+                o[prop] = p[prop]; // Add the property to o.
+            }
+            return o;
+        }
+
+        // Define an extend function that copies the properties of its second and
+        // subsequent arguments onto its first argument.
+        // We work around an IE bug here: in many versions of IE, the for/in loop
+        // won't enumerate an enumerable property of o if the prototype of o has
+        // a nonenumerable property by the same name. This means that properties
+        // like toString are not handled correctly unless we explicitly check for them.
+        
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
